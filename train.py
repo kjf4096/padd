@@ -439,7 +439,7 @@ while episode < max_episode:  # 训练max_episode个回合，test部分不计算
     logger.info('episode:{}    e_greed:{}   test_reward:{}'.format(
         episode, agent.e_greed, eval_reward))
     for i in range(0, 20):
-        total_reward = run_episode2(env, agent, rpm)
+        total_reward = run_episode(env, agent, rpm)
         episode += 1
         
 
