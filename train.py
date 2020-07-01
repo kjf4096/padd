@@ -429,15 +429,21 @@ if os.path.exists('./model.ckpt'):
 while len(rpm) < MEMORY_WARMUP_SIZE:
     run_episode(env, agent, rpm)
 
+eval_reward = evaluate(env, agent)  
+logger.info('episode:{}    e_greed:{}   test_reward:{}'.format(
+    episode, agent.e_greed, eval_reward))
+
 max_episode = 20000
 
 # 开始训练
+
+
 episode = 0
+
+
 while episode < max_episode:  # 训练max_episode个回合，test部分不计算入episode数量
     # train part
-    eval_reward = evaluate(env, agent)  
-    logger.info('episode:{}    e_greed:{}   test_reward:{}'.format(
-        episode, agent.e_greed, eval_reward))
+
     for i in range(0, 20):
         total_reward = run_episode(env, agent, rpm)
         episode += 1
