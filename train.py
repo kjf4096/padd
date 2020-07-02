@@ -426,6 +426,7 @@ if os.path.exists('./model.ckpt'):
 
 
 # 先往经验池里存一些数据，避免最开始训练的时候样本丰富度不够
+episode = 0
 while len(rpm) < MEMORY_WARMUP_SIZE:
     run_episode(env, agent, rpm)
 
@@ -438,7 +439,7 @@ max_episode = 20000
 # 开始训练
 
 
-episode = 0
+
 
 
 while episode < max_episode:  # 训练max_episode个回合，test部分不计算入episode数量
