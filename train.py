@@ -425,14 +425,15 @@ if os.path.exists('./model.ckpt'):
     #print('loaded')
 
 
+
+eval_reward = evaluate(env, agent)  
+logger.info('episode:{}    e_greed:{}   test_reward:{}'.format(
+    episode, agent.e_greed, eval_reward))
 # 先往经验池里存一些数据，避免最开始训练的时候样本丰富度不够
 episode = 0
 while len(rpm) < MEMORY_WARMUP_SIZE:
     run_episode(env, agent, rpm)
 
-eval_reward = evaluate(env, agent)  
-logger.info('episode:{}    e_greed:{}   test_reward:{}'.format(
-    episode, agent.e_greed, eval_reward))
 
 max_episode = 20000
 
