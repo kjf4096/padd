@@ -372,9 +372,9 @@ def run_episode2(env, agent, rpm):
         if done:
             #print(total_reward)
             break
-        #if total_reward > 63:
+        if total_reward > 30000:
             
-        #    break
+            break
 
     return total_reward
 
@@ -425,7 +425,7 @@ if os.path.exists('./model.ckpt'):
     #print('loaded')
 
 
-
+episode = -1
 eval_reward = evaluate(env, agent)  
 logger.info('episode:{}    e_greed:{}   test_reward:{}'.format(
     episode, agent.e_greed, eval_reward))
